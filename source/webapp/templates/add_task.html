@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>ADD</title>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">ToDoList</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Переключатель навигации">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="{% url 'index' %}">На главную</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<h3>Добавление новой задачи</h3>
+<div class="container main-container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-5">
+                <label for="title" class="form-label padding-left padding-top">Введите заголовок</label>
+                <input type="text" id="title" name="title" class="form-control padding-left"
+                       placeholder="Заголовок">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <label for="description" class="form-label padding-left padding-top">Введите описание</label>
+                <textarea name="description" id="description" cols="30" rows="10" class="form-control padding-left">
+                </textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-5">
+                <label for="date" class="form-label padding-left padding-top">Введите дату формата "YYYY-mm-dd"</label>
+                <input type="text" id="due_date" name="due_date" class="form-control padding-left"
+                       placeholder="2023-02-17">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <button type="submit" class="btn btn-primary padding-left padding-top">Добавить</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>
